@@ -1,0 +1,36 @@
+# Development Dockerfile for Node.js
+# Includes hot-reloading and development tools
+
+FROM node:20-alpine
+
+# Install development tools
+RUN apk add --no-cache \
+    python3 \
+    make \
+    g++ \
+    git \
+    bash
+
+# Install nodemon globally for hot-reloading
+RUN npm install -g nodemon
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install all dependencies (including devDependencies)
+RUN npm install
+
+# Copy application code
+COPY . .
+
+# Expose application port and debug port
+EXPOSE 3000 9229
+
+# Set development environment
+ENV NODE_ENV=development
+
+# Start with nodemon for hot-reloading
+CMD ["nodemon", "--inspect=0.0.0.0:9229", "index.js"]
