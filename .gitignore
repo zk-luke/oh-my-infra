@@ -1,0 +1,43 @@
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Docker volumes
+postgres-data/
+redis-data/
+pgadmin-data/
+
+# Log files
+*.log
+ec2-*.txt
+ecr-*.txt
+
+# Temporary files
+/tmp/
+*.tmp
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+node_modules/
+dist/
+build/
+target/
+*.o
+*.out
+
+# Backup files
+*.bak
+backup.sql
+redis-backup.rdb
